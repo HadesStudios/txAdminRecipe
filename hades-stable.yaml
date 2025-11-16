@@ -39,7 +39,7 @@ tasks:
   # Prepare Database
   - action: connect_database
   - action: query_database
-    file: ./tmp/hades/hades.sql
+    file: ./tmp/hades/sql/hades.sql
 
   # Defaults/Depenencies
   - action: download_github
