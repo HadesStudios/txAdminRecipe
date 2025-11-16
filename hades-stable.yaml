@@ -17,8 +17,20 @@ tasks:
     dest: ./server.cfg
 
   - action: move_path
-    src: ./tmp/hades/resources.cfg
+    src: ./tmp/hades/configs/resources.cfg
     dest: ./configs/resources.cfg
+
+  - action: move_path
+    src: ./tmp/hades/configs/poolsize.cfg
+    dest: ./configs/poolsize.cfg
+
+  - action: move_path
+    src: ./tmp/hades/configs/webhooks.cfg
+    dest: ./configs/webhooks.cfg
+
+  - action: move_path
+    src: ./tmp/hades/configs/mongodb.cfg
+    dest: ./configs/mongodb.cfg
 
   - action: move_path
     src: ./tmp/hades/logo96.png
