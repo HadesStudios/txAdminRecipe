@@ -1,0 +1,389 @@
+$engine: 3
+$onesync: on
+name: Hades Framework
+version: 1.0.0
+author: The Community
+description: Easy-to-use TXAdmin recipe for getting hades Framework up and running in minutes.
+
+tasks:
+  #  Download Base Files
+  - action: download_github
+    src: https://github.com/HadesStudios/txAdminRecipe
+    ref: main
+    dest: ./tmp/hades
+
+  - action: move_path
+    src: ./tmp/hades/server.cfg
+    dest: ./server.cfg
+
+  - action: move_path
+    src: ./tmp/hades/resources.cfg
+    dest: ./configs/resources.cfg
+
+  - action: move_path
+    src: ./tmp/hades/logo96.png
+    dest: ./logo96.png
+
+  # Prepare Database
+  - action: connect_database
+  - action: query_database
+    file: ./tmp/hades/hades.sql
+
+  # Defaults/Depenencies
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: resources
+    dest: ./resources/[cfx-default]
+  - action: remove_path
+    path: ./resources/[cfx-default]/[gameplay]/chat
+
+  - action: download_file
+    path: ./tmp/oxmysql.zip
+    url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
+  - action: unzip
+    dest: ./resources
+    src: ./tmp/oxmysql.zip
+
+  - action: download_file
+    path: ./tmp/screenshot-basic.zip
+    url: https://github.com/project-error/screenshot-basic/releases/latest/download/screenshot-basic.zip
+  - action: unzip
+    dest: ./resources/screenshot-basic
+    src: ./tmp/screenshot-basic.zip
+
+  - action: waste_time # prevent github throttling
+    seconds: 10
+
+  # hades Framework
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-admin
+    ref: main
+    dest: ./resources/[hades]/hades-admin
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-animations
+    ref: main
+    dest: ./resources/[hades]/hades-animations
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-apartments    
+    ref: main
+    dest: ./resources/[hades]/hades-apartments
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-arcade    
+    ref: main
+    dest: ./resources/[hades]/hades-arcade
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-base    
+    ref: main
+    dest: ./resources/[hades]/hades-base
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-billboards
+    ref: main
+    dest: ./resources/[hades]/hades-billboards
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-blips
+    ref: main
+    dest: ./resources/[hades]/hades-blips
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-businesses
+    ref: main
+    dest: ./resources/[hades]/hades-businesses
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-casino
+    ref: main
+    dest: ./resources/[hades]/hades-casino
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-cctv
+    ref: main
+    dest: ./resources/[hades]/hades-cctv
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-characters
+    ref: main
+    dest: ./resources/[hades]/hades-characters
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-chat
+    ref: main
+    dest: ./resources/[hades]/hades-chat
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-commands
+    ref: main
+    dest: ./resources/[hades]/hades-commands
+
+  - action: waste_time # prevent github throttling
+    seconds: 10
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-customs
+    ref: main
+    dest: ./resources/[hades]/hades-customs
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-damage
+    ref: main
+    dest: ./resources/[hades]/hades-damage
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-dealerships
+    ref: main
+    dest: ./resources/[hades]/hades-dealerships
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-doors
+    ref: main
+    dest: ./resources/[hades]/hades-doors
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-drugs
+    ref: main
+    dest: ./resources/[hades]/hades-drugs
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-escort
+    ref: main
+    dest: ./resources/[hades]/hades-escort
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-evidence
+    ref: main
+    dest: ./resources/[hades]/hades-evidence
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-finance
+    ref: main
+    dest: ./resources/[hades]/hades-finance
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-fitment
+    ref: main
+    dest: ./resources/[hades]/hades-fitment
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-fuel
+    ref: main
+    dest: ./resources/[hades]/hades-fuel
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-games
+    ref: main
+    dest: ./resources/[hades]/hades-games
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-hud
+    ref: main
+    dest: ./resources/[hades]/hades-hud
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-inventory
+    ref: main
+    dest: ./resources/[hades]/hades-inventory
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-ipl
+    ref: main
+    dest: ./resources/[hades]/hades-ipl
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-jail
+    ref: main
+    dest: ./resources/[hades]/hades-jail
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-jobs
+    ref: main
+    dest: ./resources/[hades]/hades-jobs
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-keybinds
+    ref: main
+    dest: ./resources/[hades]/hades-keybinds
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-labor
+    ref: main
+    dest: ./resources/[hades]/hades-labor
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-laptop
+    ref: main
+    dest: ./resources/[hades]/hades-laptop
+
+  - action: waste_time # prevent github throttling
+    seconds: 10
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-lasers
+    ref: main
+    dest: ./resources/[hades]/hades-lasers
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-locations
+    ref: main
+    dest: ./resources/[hades]/hades-locations
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-loadscreen
+    ref: main
+    dest: ./resources/[hades]/hades-loadscreen
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-mdt
+    ref: main
+    dest: ./resources/[hades]/hades-mdt
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-mechanic
+    ref: main
+    dest: ./resources/[hades]/hades-mechanic
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-menu
+    ref: main
+    dest: ./resources/[hades]/hades-menu
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-objects
+    ref: main
+    dest: ./resources/[hades]/hades-objects
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-ped
+    ref: main
+    dest: ./resources/[hades]/hades-ped
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-pedinteraction
+    ref: main
+    dest: ./resources/[hades]/hades-pedinteraction
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-phone
+    ref: main
+    dest: ./resources/[hades]/hades-phone
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-police
+    ref: main
+    dest: ./resources/[hades]/hades-police
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-polyzone
+    ref: main
+    dest: ./resources/[hades]/hades-polyzone
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-properties
+    ref: main
+    dest: ./resources/[hades]/hades-properties
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-pwnzor
+    ref: main
+    dest: ./resources/[hades]/hades-pwnzor
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-queue
+    ref: main
+    dest: ./resources/[hades]/hades-queue
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-radar
+    ref: main
+    dest: ./resources/[hades]/hades-radar
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-radio
+    ref: main
+    dest: ./resources/[hades]/hades-radio
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-restaurant
+    ref: main
+    dest: ./resources/[hades]/hades-restaurant
+
+  - action: waste_time # prevent github throttling
+    seconds: 10
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-robbery
+    ref: main
+    dest: ./resources/[hades]/hades-robbery
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-scenes
+    ref: main
+    dest: ./resources/[hades]/hades-scenes
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-sounds
+    ref: main
+    dest: ./resources/[hades]/hades-sounds
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-status
+    ref: main
+    dest: ./resources/[hades]/hades-status
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-sync
+    ref: main
+    dest: ./resources/[hades]/hades-sync
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-targeting
+    ref: main
+    dest: ./resources/[hades]/hades-targeting
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-taxi
+    ref: main
+    dest: ./resources/[hades]/hades-taxi
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-tow
+    ref: main
+    dest: ./resources/[hades]/hades-tow
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-vacation
+    ref: main
+    dest: ./resources/[hades]/hades-vacation
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-vehicles
+    ref: main
+    dest: ./resources/[hades]/hades-vehicles
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-visuals
+    ref: main
+    dest: ./resources/[hades]/hades-visuals
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-voip
+    ref: main
+    dest: ./resources/[hades]/hades-voip
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-weapons
+    ref: main
+    dest: ./resources/[hades]/hades-weapons
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-weed
+    ref: main
+    dest: ./resources/[hades]/hades-weed
+   
+  # Clean up
+  - action: remove_path
+    path: ./tmp
