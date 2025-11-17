@@ -407,6 +407,11 @@ tasks:
     src: https://github.com/HadesStudios/hades-weed
     ref: main
     dest: ./resources/[hades]/hades-weed
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-xmas
+    ref: main
+    dest: ./resources/[hades]/hades-xmas
    
   # Clean up
   - action: remove_path
