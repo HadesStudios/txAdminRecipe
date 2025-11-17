@@ -153,6 +153,11 @@ tasks:
     dest: ./resources/[hades]/hades-damage
 
   - action: download_github
+    src: https://github.com/HadesStudios/hades-dj
+    ref: main
+    dest: ./resources/[hades]/hades-dj
+
+  - action: download_github
     src: https://github.com/HadesStudios/hades-dealerships
     ref: main
     dest: ./resources/[hades]/hades-dealerships
