@@ -135,6 +135,11 @@ tasks:
     dest: ./resources/[hades]/hades-chat
 
   - action: download_github
+    src: https://github.com/HadesStudios/hades-shells
+    ref: main
+    dest: ./resources/[hades]/hades-shells
+
+  - action: download_github
     src: https://github.com/HadesStudios/hades-commands
     ref: main
     dest: ./resources/[hades]/hades-commands
