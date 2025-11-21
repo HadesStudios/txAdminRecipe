@@ -417,6 +417,11 @@ tasks:
     src: https://github.com/HadesStudios/hades-xmas
     ref: main
     dest: ./resources/[hades]/hades-xmas
+
+  - action: download_github
+    src: https://github.com/HadesStudios/hades-recoil
+    ref: main
+    dest: ./resources/[hades]/hades-recoil
    
   # Clean up
   - action: remove_path
