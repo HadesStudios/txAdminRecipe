@@ -63,12 +63,10 @@ tasks:
     dest: ./resources/screenshot-basic
     src: ./tmp/screenshot-basic.zip
 
-  - action: download_file
-    path: ./tmp/xsound.zip
-    url: https://github.com/Xogy/xsound/archive/refs/heads/master.zip
-  - action: unzip
+  - action: download_github
+    src: https://github.com/Xogy/xsound
+    ref: master
     dest: ./resources/xsound
-    src: ./tmp/xsound.zip
 
   - action: waste_time # prevent github throttling
     seconds: 10
